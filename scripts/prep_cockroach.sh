@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-cockroach sql --insecure -e "
-create user if not exists tpccuser;
-grant admin to tpccuser;
-"
-
-# cockroach workload init tpcc --warehouses 1 --data-loader IMPORT "postgresql://tpccuser@`hostname`:26257/tpcc?sslmode=disable"
+cockroach sql --insecure << EOF
+CREATE USER IF NOT EXISTS crdbuser;
+-- GRANT SYSTEM MODIFYCLUSTERSETTING, EXTERNALIOIMPLICITACCESS TO crdbuser;
+GRANT ADMIN to crdbuser;
+CREATE DATABASE crdbtpcc;
+ALTER DATABASE crdbtpcc OWNER TO crdbuser;
+EOF

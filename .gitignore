@@ -1,1 +1,5 @@
 .DS_Store
+molt
+replicator
+fetch-*.log
+fileserver/

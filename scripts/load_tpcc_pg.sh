@@ -3,7 +3,7 @@ MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 pushd ${MYDIR}/../import
 
-psql postgresql://postgres:root@`hostname` <<EOF
+psql postgresql://pguser:pguser@`hostname`/pgtpcc <<EOF
 \i tpcc.dmp.pg.sql
 \i district.export.sql
 \i warehouse.export.sql
@@ -14,6 +14,15 @@ psql postgresql://postgres:root@`hostname` <<EOF
 \i history.export.sql
 \i order_line.export.sql
 \i stock.export.sql
+ANALYZE district;
+ANALYZE warehouse;
+ANALYZE item;
+ANALYZE customer;
+ANALYZE new_order;
+ANALYZE "order";
+ANALYZE history;
+ANALYZE order_line;
+ANALYZE stock;
 EOF
 
 popd

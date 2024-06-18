@@ -10,6 +10,5 @@ docker run -d --rm \
 --env POSTGRES_USER=postgres \
 --env POSTGRES_PASSWORD=root \
 --mount source=${DATA_VOL},target=/var/lib/postgresql/data \
--v $CONF_FILE:/etc/postgresql/postgresql.conf \
 -p 5432:5432 \
-$IMAGE
+$IMAGE -c wal_level=logical
