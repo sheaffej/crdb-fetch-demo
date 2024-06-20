@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-pushd ${MYDIR}/../import
+cd ${MYDIR}/../import
 
 psql postgresql://pguser:pguser@`hostname`/pgtpcc <<EOF
 \i tpcc.dmp.pg.sql
@@ -24,5 +24,3 @@ ANALYZE history;
 ANALYZE order_line;
 ANALYZE stock;
 EOF
-
-popd

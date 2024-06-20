@@ -5,6 +5,9 @@ cd ${MYDIR}/..
 # Build image
 docker build -t busybox-fileserver -f Dockerfile.fileserver .
 
+# Create the fileserver directory
+mkdir -p fileserver
+
 # Launch container
 docker run -d --rm \
 --name fileserver \

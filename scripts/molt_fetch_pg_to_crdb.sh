@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-pushd ${MYDIR}/..
+cd ${MYDIR}/..
 
 ./molt fetch \
 --source "postgresql://pguser:pguser@`hostname`/pgtpcc" \
@@ -12,7 +12,5 @@ pushd ${MYDIR}/..
 --local-path-listen-addr "`hostname`:8999" \
 --compression 'none' \
 --ongoing-replication \
---allow-tls-mode-disable 
-# --show-connection-logging --logging 'debug'
-
-popd
+--allow-tls-mode-disable \
+--non-interactive

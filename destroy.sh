@@ -10,5 +10,4 @@ docker ps
 
 rm -Rf \
     ${MYDIR}/fileserver \
-    ${MYDIR}/fetch-*.log \
-    ${MYDIR}/replicator
+    ${MYDIR}/fetch-*.log
