@@ -1,11 +1,14 @@
 # crdb-fetch-demo
+This repository contains scripts to demo using MOLT Fetch to migrate the TPC-C schema from PostgreSQL to CockroachDB. This demo runs locally on a laptop using the Docker engine.
 
 ## Installation
+Start the Docker engine on your local laptop. You may use Docker Desktop, or an alternative like Colima.
+
 After cloning this repo, download and extract the MOLT binaries into the repo's top directory.
 The MOLT binary can be downloaded from here:  
 https://www.cockroachlabs.com/docs/molt/molt-fetch#installation
 
-Here is an example of downloading when running on MacOS Intel.
+Here is an example of downloading the MOLT binaries when running on macOS Intel.
 
 ```bash
 git clone https://github.com/sheaffej/crdb-fetch-demo.git
@@ -16,6 +19,8 @@ rm molt-*.tgz
 ```
 
 ## Demo
+These scripts are run from the repo's top-level directory.
+
 To run the demo:
 ```bash
 ./run_demo.sql
