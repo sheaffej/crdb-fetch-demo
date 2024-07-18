@@ -13,4 +13,5 @@ cd ${MYDIR}/..
 --compression 'none' \
 --ongoing-replication \
 --allow-tls-mode-disable \
---non-interactive
+--non-interactive \
+--use-console-writer

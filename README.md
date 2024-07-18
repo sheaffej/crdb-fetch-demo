@@ -19,32 +19,37 @@ rm molt-*.tgz
 ```
 
 ## Demo
-These scripts are run from the repo's top-level directory.
+These scripts are run from the repo's top-level directory. 
+
+> Tip: Each of the steps are in their own shell script called from `run_demo.sh`. You can view the shell scripts to see the exact commands being executed.
 
 To run the demo:
 ```bash
-./run_demo.sql
+./run_demo.sh
 ```
 
 To clean and reset the demo:
 ```bash
-./destroy.sql
+./destroy.sh
 ```
 
-Once the migration is complete and to demonstrate continous replication:
+Once the migration is complete you can run thsee to demonstrate continous replication:
 ```sql
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- Demonstrate continous replication
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--- On CockroachDB (shell)
+-- On CockroachDB (in a shell terminal)
 cockroach sql --insecure --watch 0.5s -e "select * from crdbtpcc.warehouse";
 
 
--- On psql (SQL)
+-- On psql (in a SQL terminal)
 INSERT INTO warehouse VALUES (1, 'test', 'test', 'test', 'test', 'CA', '0000000', 0.0920, 300000.00);
+-- Watch the change in the CRDB terminal
 
 UPDATE warehouse set w_name = '--', w_street_1 = '--', w_street_2 = '--', w_city = '--', w_zip = '--' where w_id = 1;
+-- Watch the change in the CRDB terminal
 
 DELETE FROM warehouse WHERE w_id = 1;
+-- Watch the change in the CRDB terminal
 ```
